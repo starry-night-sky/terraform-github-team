@@ -18,7 +18,7 @@ variable "repo_accessibility" {
   validation {
     condition     = alltrue([
       for permission in var.repo_accessibility :
-            contains(["pull", "triage", "push", "maintain", "admin"])
+            contains(["pull", "triage", "push", "maintain", "admin"], permission)
     ])
     error_message = "Valid values for var: permission are (pull, triage, push, maintain, admin)."
   }
