@@ -17,8 +17,8 @@ variable "repo_accessibility" {
   type = list(object({repository_name=string, permission=string}))
   validation {
     condition     = alltrue([
-      for permission in var.repo_accessibility :
-            contains(["pull", "triage", "push", "maintain", "admin"], permission)
+      for repo_access in var.repo_accessibility :
+            contains(["pull", "triage", "push", "maintain", "admin"], repo_access.permission)
     ])
     error_message = "Valid values for var: permission are (pull, triage, push, maintain, admin)."
   }
